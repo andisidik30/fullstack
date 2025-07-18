@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Project Portfolio</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    integrity="sha512-MWHuVkuGmMt5D1IdHEZmGV12gnK4L4AbCk+dSjqHA1xq8ZctEdM0ZAZ6OJ01OFADBoO+Uck+CxrbdvZjauAzlw=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <style>
+    :root {
+      --primary: #0f172a;
+      --secondary: #e2e8f0;
+      --accent: #020617;
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: var(--secondary);
+      color: var(--accent);
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 40px;
+      margin-bottom: 24px;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    /* ---------- FORM ---------- */
+    .container {
+      max-width: 640px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 40px;
+      border-radius: var(--radius);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      font-size: 14px;
+      font-weight: 500;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    textarea,
+    input[type="file"] {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: var(--radius);
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .row {
+      display: flex;
+      gap: 20px;
+    }
+    .row .field {
+      flex: 1;
+    }
+
+    .tech-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+    .tech-group label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      font-weight: 400;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 12px 36px;
+      display: block;
+      margin: 0 auto;
+      border-radius: var(--radius);
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .btn-primary:hover {
+      opacity: 0.9;
+    }
+
+    /* ---------- PROJECT LIST ---------- */
+    .projects-wrapper {
+      max-width: 1280px;
+      margin: 60px auto;
+      padding: 0 20px 60px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 18px 16px 14px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-body h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .duration {
+      font-size: 12px;
+      margin-bottom: 10px;
+      color: #475569;
+    }
+
+    .desc {
+      font-size: 13px;
+      line-height: 1.4;
+      margin-bottom: 12px;
+      flex: 1;
+    }
+
+    .icons {
+      display: flex;
+      gap: 8px;
+      font-size: 18px;
+      margin-bottom: 14px;
+      color: var(--primary);
+    }
+
+    .actions {
+      display: flex;
+      gap: 8px;
+    }
+    .actions button {
+      flex: 1;
+      padding: 8px 0;
+      border: none;
+      border-radius: var(--radius);
+      font-size: 13px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .actions .edit {
+      background: var(--primary);
+      color: #fff;
+    }
+    .actions .delete {
+      background: #dc2626;
+      color: #fff;
+    }
+    .actions button:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <h1>ADD MY PROJECT</h1>
+  <form class="container" id="projectForm">
+    <label for="name">Project Name</label>
+    <input type="text" id="name" required />
+
+    <div class="row">
+      <div class="field">
+        <label for="start">Start Date</label>
+        <input type="date" id="start" required />
+      </div>
+      <div class="field">
+        <label for="end">End Date</label>
+        <input type="date" id="end" required />
+      </div>
+    </div>
+
+    <label for="description">Description</label>
+    <textarea id="description" required></textarea>
+
+    <p style="font-size:14px;font-weight:500;margin-bottom:6px;">Technologies</p>
+    <div id="tech-group" class="tech-group">
+    </div>
+
+    <label for="image">Upload Image</label>
+    <input type="file" id="image" accept="image/*" required />
+
+    <button type="submit" class="btn-primary">Submit</button>
+  </form>
+
+  <!-- PROJECT LIST -->
+  <div class="projects-wrapper">
+    <h1>MY PROJECT</h1>
+    <div class="grid" id="projectGrid"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById("projectForm");
+    const grid = document.getElementById("projectGrid");
+    let data = [];
+    let technologies = ['Node Js', 'React js', 'Next Js', 'Typescript'];
+    for(let i = 0; i <= technologies.length - 1; i++) {
+      const label = document.createElement("label");
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.value = "node";
+      checkbox.value = technologies[i].toLowerCase().replace(/\s+/g, '');
+      const textNote = document.createTextNode(technologies[i]);
+      label.appendChild(checkbox);
+      label.appendChild(textNote);
+      document.getElementById('tech-group').appendChild(label);
+    }
+
+    const techIcons = {
+      nodejs: "<i class='fa-brands fa-node-js'></i>",
+      reactjs: "<i class='fa-brands fa-react'></i>",
+      nextjs: "<i class='fa-solid fa-n'></i>",
+      typescript: "<i class='fa-solid fa-code'></i>"
+    };
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const start = document.getElementById("start").value;
+      const end = document.getElementById("end").value;
+      const description = document.getElementById("description").value.trim();
+      const imageFile = document.getElementById("image").files[0];
+
+      if (!imageFile) return;
+
+      // Read image as base64 so we can show it directly without uploading.
+      const imgSrc = await toBase64(imageFile);
+
+      const techChecked = [...form.querySelectorAll("input[type='checkbox']:checked")].map(
+        (cb) => cb.value
+      );
+
+      const card = buildCard({ name, start, end, description, techChecked, imgSrc });
+      grid.prepend(card);
+
+      form.reset();
+    });
+
+    function buildCard({ name, start, end, description, techChecked, imgSrc }) {
+      const div = document.createElement("div");
+      div.className = "card";
+
+      const startDate = new Date(start);
+      const endDate = new Date(end);
+      const durationMonths = Math.ceil(
+        (endDate - startDate) / (1000 * 60 * 60 * 24 * 30)
+      );
+
+      const year = startDate.getFullYear();
+      let rawData = {
+        name: name,
+        imgSrc: imgSrc,
+        year: year,
+        durationMonths: durationMonths,
+        description: description
+      };
+      data.push(rawData);
+      for(let i = 0; i <= data.length - 1; i++) {
+        div.innerHTML = `
+          <img src="${data[i].imgSrc}" alt="${data[i].name}" />
+          <div class="card-body">
+            <h3>${data[i].name} &nbsp;-&nbsp; ${data[i].year}</h3>
+            <p class="duration">duration : ${data[i].durationMonths} month$${data[i].durationMonths > 1 ? "s" : ""}</p>
+            <p class="desc">${data[i].description}</p>
+            <div class="icons">
+              ${techChecked.map((t) => techIcons[t]).join("")}
+            </div>
+            <div class="actions">
+              <button class="edit">edit</button>
+              <button class="delete">delete</button>
+            </div>
+          </div>`;
+      }
+
+
+      // DELETE HANDLER
+      div.querySelector(".delete").addEventListener("click", () => {
+        div.remove();
+      });
+
+      // EDIT handler (simple example: scroll to form and populate values)
+      div.querySelector(".edit").addEventListener("click", () => {
+        document.documentElement.scrollTo({ top: 0, behavior: "smooth" });
+        document.getElementById("name").value = name;
+        document.getElementById("start").value = start;
+        document.getElementById("end").value = end;
+        document.getElementById("description").value = description;
+        form.querySelectorAll("input[type='checkbox']").forEach((cb) => {
+          cb.checked = techChecked.includes(cb.value);
+        });
+        // remove old card after editing begins
+        div.remove();
+      });
+
+      return div;
+    }
+
+    function toBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = (error) => reject(error);
+      });
+    }
+  </script>
+</body>
+</html>
